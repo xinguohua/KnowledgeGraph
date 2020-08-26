@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- @author 李耀华 -->
+	<!-- @since 2020年7月8日 -->
+
+    <settings>
+	   <!-- 全局映射器启用缓存 也就是二级缓存，需要手动开启 -->
+       <setting name="cacheEnabled" value="true" />       
+	</settings>
+	
+	<!-- 配置实体类的别名 -->
+	<typeAliases>
+	    <!-- 示例：<package name="com.jd.jdwebsite.model" /> -->
+		<package name="com.icd.model" />
+	</typeAliases>
+
+	<!-- 环境配置 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<!-- type="POOLED" 意思为使用缓存 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://127.0.0.1:3306/test_data" />
+				<property name="username" value="root" />
+				<property name="password" value="x5" />
+			</dataSource>
+		</environment>
+	</environments>
+   
+	<!-- 注册Mapper文件 -->
+	<mappers>	    
+	    <!-- 注册接口方法,让MyBatis自动帮我们实现方法 -->	
+	    <!-- 示例：<mapper class="com.jd.jdwebsite.idal.ICustomerMapper"/> -->	
+		<mapper class="com.icd.idal.IDemoMapper"/>
+		<mapper class="com.icd.idal.IRelationMapper"/>
+				
+	</mappers>
+	
+
+
+</configuration>
